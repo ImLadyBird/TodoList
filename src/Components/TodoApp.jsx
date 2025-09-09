@@ -24,6 +24,7 @@ export default function TodoApp() {
   async function postTodos({ todo }) {
     try {
       const response = await client.post("/todos/add", {
+        id: Date.now(),
         todo,
         completed: false,
         userId: 1,
