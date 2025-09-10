@@ -14,19 +14,19 @@ export default function TodoApp() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    async function getTodos() {
-      setLoading(true);
-      try {
-        const response = await client.get("/todos");
-        setTodos(response.data.todos);
-        console.log(response.data.todos);
-      } catch {
-        console.log("error");
-      }
-      setLoading(false);
-    }
     getTodos();
   }, []);
+
+  async function getTodos() {
+    setLoading(true);
+    try {
+      const response = await client.get("/todos");
+      setTodos(response.data.todos);
+    } catch {
+      console.log("error");
+    }
+    setLoading(false);
+  }
 
   async function postTodos({ todo }) {
     try {
